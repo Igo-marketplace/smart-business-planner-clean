@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "postbuild": "rm -f dist/client/wrangler.json 2>/dev/null || true"
+    "postbuild": "node -e \"const fs=require('fs');const p='dist/client/wrangler.json';if(fs.existsSync(p)){const c=JSON.parse(fs.readFileSync(p,'utf8'));if(c.triggers&&Object.keys(c.triggers).length===0){c.triggers={crons:[]};fs.writeFileSync(p,JSON.stringify(c,null,2));}}\""
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
