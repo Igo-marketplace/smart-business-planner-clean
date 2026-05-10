@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "postbuild": "sed -i 's/\"triggers\": {}/\"triggers\": {\"crons\": []}/g' dist/client/wrangler.json 2>/dev/null || true"
+    "postbuild": "rm -f dist/client/wrangler.json 2>/dev/null || true"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
